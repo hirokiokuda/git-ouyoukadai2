@@ -2,8 +2,11 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @book_comment = BookComment.new
+      
     @user = @book.user
     @books = Book.new
+
   end
 
   def index
@@ -18,7 +21,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
       @books = Book.all
-      
+
       render 'index'
     end
   end
